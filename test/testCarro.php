@@ -25,7 +25,7 @@ echo $astonMartin;
 echo $astonMartin->saludar();
 */
 
-
+/*
 //Actualizacion de datos en propiedad
 $Mclaren = new Carro();
 $Mclaren->setId(10);
@@ -38,6 +38,19 @@ echo $Mclaren;
 
 //Eliminación de objetos, cambio de estado.
 $Mclaren->deleted(10);
+*/
+
+/*
+//Busquedas con y sin parametros
+$allCars = Carro::getAll();
+var_dump($allCars);
+
+$arrCarros = Carro::search("SELECT * FROM concesionario.carro WHERE cajaAutomatica = 'no'");
+var_dump($arrCarros);
+*/
+
+$busqueda = Carro::searchForId('11');
+echo ($busqueda);
 
 
 /*

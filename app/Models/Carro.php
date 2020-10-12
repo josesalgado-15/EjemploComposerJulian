@@ -228,12 +228,25 @@ class Carro extends BasicModel // UpperCamelCase, { }
 
     public static function getAll()
     {
-        // TODO: Implement getAll() method.
+        return Carro::search("SELECT * FROM concesionario.carro");
     }
 
     public static function searchForId($id)
     {
-        // TODO: Implement searchForId() method.
+       $Carro = null;
+       if ($id>0){
+           $Carro = new Carro();
+           $getrow = $Carro->getRow("SELECT * FROM concesionario.carro WHERE id =?", array($id));
+           $Carro->setId($getrow['id']);
+           $Carro->setMarca($getrow['marca']);
+           $Carro->setColor($getrow['color']);
+           $Carro->setAnno($getrow['anno']);
+           $Carro->setCajaAutomatica($getrow['cajaAutomatica']);
+           $Carro->setCantidadGasolina($getrow['cantidadGasolina']);
+           $Carro->setEstado($getrow['estado']);
+       }
+       $Carro->Disconnect();
+       return $Carro;
     }
 
     //Metodos
