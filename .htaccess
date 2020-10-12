@@ -1,0 +1,7 @@
+RewriteEngine on
+RewriteRule ^$ views [L]
+<FilesMatch "\.(env)$">
+Order Deny,Allow
+Allow from all
+</FilesMatch>
+
