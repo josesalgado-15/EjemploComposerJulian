@@ -21,16 +21,27 @@ class Carro extends BasicModel // UpperCamelCase, { }
      * Carro constructor.
      * @param string $marca
      */
-    public function __construct(string $marca="Generica", $color="Rojo", $anno = 0, $cajaAutomatica = "No", $estado = "Disponible")
+    public function __construct($arrCarro = array())
     {
-
         parent::__construct();
-        $this->setMarca($marca);
-        $this->setColor($color);
-        $this->setAnno($anno);
-        $this->setCajaAutomatica($cajaAutomatica);
-        $this->setCantidadGasolina(10);
-        $this->setEstado($estado);
+        $this->setId($arrCarro['id'] ?? 0);
+        $this->setMarca($arrCarro['marca'] ?? "Generica"); //Propiedad recibida y asigna a una propiedad de la clase
+        $this->setColor($arrCarro['color'] ?? "Rojo");
+        $this->setAnno($arrCarro['anno'] ?? 0);
+        $this->setCajaAutomatica($arrCarro['cajaAutomatica'] ?? "No");
+        $this->setCantidadGasolina($arrCarro['cantidadGasolina'] ?? 10); //Por defecto de fabrica salen con 10 litros de gasolina
+        $this->setEstado($arrCarro['estado'] ?? "Disponible");
+    }
+
+
+    static function carroRegistrado(string $marca, int $anno){
+        $marca = strtolower(trim($marca));
+        $result = Carro::search("SELECT * FROM concesionario.carro where marca = '" . $marca. "' and anno = ".$anno);
+        if ( count ($result) > 0 ) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function __destruct() // Cierro Conexiones

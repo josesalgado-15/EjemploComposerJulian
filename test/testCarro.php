@@ -7,12 +7,12 @@ use App\Models\Carro;
 use App\Models\CarroDeportivo;
 
 
-/*$bmw = new Carro('BMW ', 'Azul',
+$bmw = new Carro('BMW ', 'Azul',
     2015,
     'si',
     'Vendido'); // Crear el objeto bmw de la clase Carro; A esto se le llama instanciacion.
 $bmw->create();
-*/
+
 
 $mercedes = new Carro(); //Segundo Objeto de la clase Objeto
 $audi = new Carro("Audi", "Naranja", 2017, 'si','Vendido');
